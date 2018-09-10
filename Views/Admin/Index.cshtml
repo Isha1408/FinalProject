@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<FinalProject.Models.User>
 
 @{
-    ViewBag.Title = "Welcome Admin";
+    ViewBag.Title = "Welcome ";
 }
 @if(Session["UserId"]!=null)
 {
-<h4>Hello@Session["UserName"].ToString()</h4>
+<h4>Hello @Session["UserName"].ToString()</h4>
 }
-
+<h2>Welcome Admin</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -35,7 +35,9 @@
         <th>
             @Html.DisplayNameFor(model => model.UserName)
         </th>
-       
+        <th>
+            @Html.DisplayNameFor(model => model.Courses)
+        </th>
         <th></th>
     </tr>
 
@@ -62,7 +64,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.UserName)
         </td>
-       
+        <td>
+            @Html.DisplayFor(modelItem => item.Courses)
+        </td>
         <td>
            
             @Html.ActionLink("Details", "Details", new { id=item.UserId }) |

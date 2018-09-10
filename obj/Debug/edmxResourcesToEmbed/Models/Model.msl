@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="SchoolDBModelStoreContainer" CdmEntityContainer="SchoolDBEntities1">
+  <EntityContainerMapping StorageEntityContainer="SchoolDBModelStoreContainer" CdmEntityContainer="SchoolDBEntities2">
     <EntitySetMapping Name="logins">
       <EntityTypeMapping TypeName="SchoolDBModel.login">
         <MappingFragment StoreEntitySet="login">
@@ -21,7 +21,7 @@
     </EntitySetMapping>
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="SchoolDBModel.User">
-        <MappingFragment StoreEntitySet="Users">
+        <MappingFragment StoreEntitySet="User">
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />
@@ -31,6 +31,7 @@
           <ScalarProperty Name="Roles" ColumnName="Roles" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="Courses" ColumnName="Courses" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

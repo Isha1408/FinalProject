@@ -12,21 +12,22 @@ namespace FinalProject.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
-    public partial class SchoolDBEntities1 : DbContext
+    using System.Data.Entity.ModelConfiguration.Conventions;
+
+    public partial class SchoolDBEntities2 : DbContext
     {
-        public SchoolDBEntities1()
-            : base("name=SchoolDBEntities1")
+        public SchoolDBEntities2()
+            : base("name=SchoolDBEntities2")
         {
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            throw new UnintentionalCodeFirstException();
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
     
         public virtual DbSet<login> logins { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
-        public virtual DbSet<User> user { get; set; }
+        public virtual DbSet<User> User { get; set; }
     }
 }

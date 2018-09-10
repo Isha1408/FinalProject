@@ -12,9 +12,9 @@ namespace FinalProject.Controllers
         // GET: Account
         public ActionResult Index()
         {
-            using (SchoolDBEntities1 db = new SchoolDBEntities1())
+            using (SchoolDBEntities2 db = new SchoolDBEntities2())
             {
-                return View(db.user.ToList());
+                return View(db.User.ToList());
             }
         }
         public ActionResult Registration()
@@ -24,18 +24,18 @@ namespace FinalProject.Controllers
         [HttpPost]
         public ActionResult Registration(User user)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                using (SchoolDBEntities1 db = new SchoolDBEntities1()) 
+                using (SchoolDBEntities2 db = new SchoolDBEntities2())
                 {
-                    db.user.Add(user);
+                    db.User.Add(user);
                     db.SaveChanges();
                 }
                 ModelState.Clear();
-                ViewBag.Message = user.FirstName + "" + user.LastName + "" +user.EmailId+ ""+user.Gender+ "" +user.Password+ "" +user.ConfirmPassword+ ""+user.Roles+ "" +user.UserId+ "" +user.UserName+ "Succesfully Registered.";
+                ViewBag.Message = user.FirstName + "" + user.LastName + "" + user.EmailId + "" + user.Gender + "" + user.Password +""+user.ConfirmPassword+ "" + user.Roles + "" + user.UserId + "" + user.UserName + "" + user.Courses + "Succesfully Registered.";
 
             }
-            return View("Login");
+            return RedirectToAction("Login");
         }
         public ActionResult Login()
         {
@@ -45,19 +45,19 @@ namespace FinalProject.Controllers
         public ActionResult Login(User user)
         {
 
-            using (SchoolDBEntities1 db = new SchoolDBEntities1())
+            using (SchoolDBEntities2 db = new SchoolDBEntities2())
             {
-                var userDetails = db.user.Where(x => x.UserName == user.UserName && x.Password == user.Password).FirstOrDefault();
+                var userDetails = db.User.Where(x => x.UserName == user.UserName && x.Password == user.Password).FirstOrDefault();
                 //Code to Authenticate Identity Of user.
-
                 if (userDetails != null)
                 {
                     if (userDetails.Roles == "Admin")
                         return RedirectToAction("Index","Admin");
-                    else if(userDetails.Roles == "Student")
+                    else if (userDetails.Roles == "Student")
                         return RedirectToAction("Student");
                     else if (userDetails.Roles == "Teacher")
                         return RedirectToAction("Index","Teacher");
+
 
                     Session["UserId"] = userDetails.UserId.ToString();
                     Session["UserName"] = userDetails.UserName.ToString();
@@ -72,40 +72,26 @@ namespace FinalProject.Controllers
 
             }
             return View();
-            
-
         }
 
-        public ActionResult LoggedIn()
+        public ActionResult LogOut()
         {
             if (Session["UserId"] != null)
             {
-                return View();
+                return RedirectToAction("Login");
             }
             else
             {
-                return RedirectToAction("Login");
+                return RedirectToAction("Index", "Home");
             }
         }
-        //public ActionResult Admin()
-        //{
-        //    using (SchoolDBEntities1 db = new SchoolDBEntities1())
-        //    {
-        //        return View(db.Users.ToList());
-        //    }
-         
-        //}
+
         public ActionResult Student()
         {
             return View();
         }
-        //public ActionResult Teacher()
-        //{
-        //    using (SchoolDBEntities1 db = new SchoolDBEntities1())
-        //    {
-        //        return View(db.user.ToList());
-        //    }
-        //}
+
     }
 }
+
    

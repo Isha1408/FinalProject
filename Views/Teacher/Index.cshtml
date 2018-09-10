@@ -7,7 +7,7 @@
 {
     <h4> Hello@Session["UserName"].ToString()</h4>
 }
-<h2>Welcome</h2>
+<h2>Student List</h2>
 
 @*<p>
     @Html.ActionLink("Create New", "Create")
@@ -31,6 +31,9 @@
         </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Roles)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Courses)
         </th>
         @*<th>
             @Html.DisplayNameFor(model => model.UserName)

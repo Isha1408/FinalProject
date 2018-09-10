@@ -16,7 +16,7 @@
     <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="RoleName" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <EntityType Name="Users">
+  <EntityType Name="User">
     <Key>
       <PropertyRef Name="UserId" />
     </Key>
@@ -29,6 +29,7 @@
     <Property Name="Roles" Type="varchar" MaxLength="50" />
     <Property Name="UserName" Type="varchar" MaxLength="50" />
     <Property Name="RoleId" Type="int" />
+    <Property Name="Courses" Type="varchar" MaxLength="50" />
   </EntityType>
   <Association Name="FK_login_login">
     <End Role="login" Type="Self.login" Multiplicity="1" />
@@ -45,7 +46,7 @@
   <EntityContainer Name="SchoolDBModelStoreContainer">
     <EntitySet Name="login" EntityType="Self.login" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_login_login" Association="Self.FK_login_login">
       <End Role="login" EntitySet="login" />
       <End Role="login1" EntitySet="login" />

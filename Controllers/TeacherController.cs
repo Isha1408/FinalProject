@@ -13,11 +13,11 @@ namespace FinalProject.Controllers
     public class TeacherController : Controller
     {
         // GET: Teacher
-        private SchoolDBEntities1 db = new SchoolDBEntities1();
+        private SchoolDBEntities2 db = new SchoolDBEntities2();
     
        public ActionResult Index()
         {
-            var returnedResult =db.user.Where(x=>x.Roles=="Student").ToList();
+            var returnedResult =db.User.Where(x=>x.Roles=="Student").ToList();
             return View(returnedResult);
 
           
@@ -28,9 +28,9 @@ namespace FinalProject.Controllers
         // GET: Admin/Details/5
         public ActionResult Details(int id)
         {
-            using (SchoolDBEntities1 db = new SchoolDBEntities1())
+            using (SchoolDBEntities2 db = new SchoolDBEntities2())
             {
-                var dataById = db.user.Single(x => x.UserId == id);
+                var dataById = db.User.Single(x => x.UserId == id);
                 return View(dataById);
             }
         }
