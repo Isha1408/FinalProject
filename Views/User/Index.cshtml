@@ -1,12 +1,10 @@
 ﻿@model IEnumerable<FinalProject.Models.User>
 
 @{
-    ViewBag.Title = "Welcome ";
+    ViewBag.Title = "Index";
 }
-@if(Session["UserId"]!=null)
-{
-<h4>Hello @Session["UserName"].ToString()</h4>
-}
+
+<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -33,6 +31,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoleId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Courses)
@@ -64,10 +65,13 @@
             @Html.DisplayFor(modelItem => item.UserName)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.RoleId)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Courses)
         </td>
         <td>
-           
+            @Html.ActionLink("Edit", "Edit", new { id=item.UserId }) |
             @Html.ActionLink("Details", "Details", new { id=item.UserId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.UserId })
         </td>

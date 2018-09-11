@@ -42,6 +42,7 @@ namespace FinalProject.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Login(User user)
         {
 
@@ -51,18 +52,25 @@ namespace FinalProject.Controllers
                 //Code to Authenticate Identity Of user.
                 if (userDetails != null)
                 {
+
                     if (userDetails.Roles == "Admin")
-                        return RedirectToAction("Index","Admin");
+                    {
+                        Session["UserId"] = userDetails.UserId.ToString();
+                        Session["UserName"] = userDetails.UserName.ToString();
+                        return RedirectToAction("Index", "Admin");
+                    }
                     else if (userDetails.Roles == "Student")
-                        return RedirectToAction("Student");
+                    {
+                        Session["User"] = userDetails; 
+                      
+                        return RedirectToAction("Index", "Student");
+                    }
                     else if (userDetails.Roles == "Teacher")
-                        return RedirectToAction("Index","Teacher");
-
-
-                    Session["UserId"] = userDetails.UserId.ToString();
-                    Session["UserName"] = userDetails.UserName.ToString();
-
-                    //return RedirectToAction("LoggedIn");
+                    {
+                        Session["UserId"] = userDetails.UserId.ToString();
+                        Session["UserName"] = userDetails.UserName.ToString();
+                        return RedirectToAction("Index", "Teacher");
+                    }
                 }
                 else
                 {

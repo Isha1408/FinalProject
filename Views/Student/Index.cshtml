@@ -1,16 +1,12 @@
 ﻿@model IEnumerable<FinalProject.Models.User>
 
 @{
-    ViewBag.Title = "Welcome ";
-}
-@if(Session["UserId"]!=null)
-{
-<h4>Hello @Session["UserName"].ToString()</h4>
+    ViewBag.Title = "Index";
 }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h2>My Profile</h2>
+
+
 <table class="table">
     <tr>
         <th>
@@ -23,17 +19,21 @@
             @Html.DisplayNameFor(model => model.Gender)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.EmailId)
+            @Html.DisplayNameFor(model => model.UserName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Password)
+            @Html.DisplayNameFor(model => model.EmailId)
         </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Roles)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserName)
-        </th>
+
+        @*<th>
+            @Html.DisplayNameFor(model => model.RoleId)
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Courses)
         </th>
@@ -52,24 +52,28 @@
             @Html.DisplayFor(modelItem => item.Gender)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.EmailId)
+            @Html.DisplayFor(modelItem => item.UserName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Password)
+            @Html.DisplayFor(modelItem => item.EmailId)
         </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.Roles)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserName)
-        </td>
+
+        @*<td>
+            @Html.DisplayFor(modelItem => item.RoleId)
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.Courses)
         </td>
         <td>
-           
-            @Html.ActionLink("Details", "Details", new { id=item.UserId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.UserId })
+            @Html.ActionLink("Update Profile", "Edit", new { id = item.UserId })
+            @*@Html.ActionLink("Details", "MyProfile", new { id=item.UserId }) |*@
+
         </td>
     </tr>
 }

@@ -1,0 +1,99 @@
+﻿@model FinalProject.Models.User
+
+@{
+    ViewBag.Title = "MyProfile";
+}
+
+<h2>MyProfile</h2>
+<form method="get" action="MyProfile">
+    </form>
+    <div>
+        <h4>User</h4>
+        <hr />
+
+        <dl class="dl-horizontal">
+
+            <dt>
+                @Html.HiddenFor(model => model.UserId)
+            </dt>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Gender)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Gender)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.UserName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UserName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.EmailId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EmailId)
+            </dd>
+
+            @*<dt>
+                    @Html.DisplayNameFor(model => model.Password)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Password)
+                </dd>*@
+
+            @*<dt>
+                    @Html.DisplayNameFor(model => model.Roles)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Roles)
+                </dd>*@
+
+
+
+            @*<dt>
+                    @Html.DisplayNameFor(model => model.RoleId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.RoleId)
+                </dd>*@
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Courses)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Courses)
+            </dd>
+
+        </dl>
+    </div>
+
+    <p>
+        @Html.ActionLink("Update Profile", "Edit", new { id = Model.UserId }) |
+        @Html.ActionLink("Cancel", "MyProfile")
+    </p>
