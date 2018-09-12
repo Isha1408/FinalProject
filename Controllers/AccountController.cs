@@ -32,7 +32,7 @@ namespace FinalProject.Controllers
                     db.SaveChanges();
                 }
                 ModelState.Clear();
-                ViewBag.Message = user.FirstName + "" + user.LastName + "" + user.EmailId + "" + user.Gender + "" + user.Password +""+user.ConfirmPassword+ "" + user.Roles + "" + user.UserId + "" + user.UserName + "" + user.Courses + "Succesfully Registered.";
+                ViewBag.Message = user.FirstName + "" + user.LastName + "" + user.EmailId + "" + user.Gender + "" + user.Password + "" +user.ConfirmPassword+ "" + user.Roles + "" + user.UserId + "" + user.UserName + "" + user.Courses + "Succesfully Registered.";
 
             }
             return RedirectToAction("Login");

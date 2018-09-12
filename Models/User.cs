@@ -16,20 +16,21 @@ namespace FinalProject.Models
     public partial class User
     {
         public int UserId { get; set; }
+        [Required(ErrorMessage = "This field is REQIURED")]
         public string FirstName { get; set; }
+        [Required(ErrorMessage = "This field is REQIURED")]
         public string LastName { get; set; }
         public string Gender { get; set; }
         [Required(ErrorMessage = "This field is REQIURED")]
+        [RegularExpression(".+@.+\\..+", ErrorMessage = "Please Enter Correct Email Address")]
         public string EmailId { get; set; }
         [Required(ErrorMessage = "This field is REQIURED")]
-        [DataType(DataType.Password)]
         public string Password { get; set; }
         [Required(ErrorMessage = "This field is REQIURED")]
         [DataType(DataType.Password)]
         [Compare("Password", ErrorMessage = "Confirm your Password")]
         public string ConfirmPassword { get; set; }
         public string Roles { get; set; }
-        [Required(ErrorMessage = "This field is REQIURED")]
         public string UserName { get; set; }
         public Nullable<int> RoleId { get; set; }
         public string Courses { get; set; }

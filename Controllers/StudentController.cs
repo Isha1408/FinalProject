@@ -78,5 +78,9 @@ namespace FinalProject.Controllers
                 return View();
             }
         }
+        public ActionResult Add()
+        {
+            return RedirectToAction("Add", "Image");
+        }
     }
 }
